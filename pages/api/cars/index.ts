@@ -9,9 +9,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ListCarsUseCase();
   } else if (req.method === 'POST') {
     const newCar = camelcaseKeys(req.body);
+    // TODO: add validations
     return res.status(200).json(await AddCarUseCase(newCar));
-  } else if (req.method === 'DELETE') {
-    return res.status(200).json(DeleteCarUseCase(parseInt(req.query.id as string)));
   } else {
     res.status(405).json({ error: 'Method not allowed' });
   }

@@ -23,3 +23,11 @@ export const deleteCarById = async (id: number) => {
   const [result] = await pool.query(query, values);
   return result;
 }
+
+export const getCarById = async (id: number) => {
+  const query = 'SELECT * from cars where id = ?';
+  const values = [id];
+  
+  const [result] = await pool.query(query, values);
+  return result;
+};
