@@ -12,8 +12,7 @@ module.exports = {
       port: 33060,
       database: 'cars',
       user:     'root',
-      password: 'secret',
-      createDatabase: true
+      password: 'secret'
     },
     migrations: {
       tableName: 'knex_migrations'
