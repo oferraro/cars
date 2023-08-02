@@ -1,6 +1,7 @@
 import { createMocks } from 'node-mocks-http'; // Import the createMocks function here
 // import GetCarByIdUseCase from '../useCases/cars/getCarById';
 import handler from '../pages/api/car/[id]';
+import GetCarByIdUseCase from 'useCases/cars/getCarById';
 
 // Mock the GetCarByIdUseCase function to return a car for testing the existing car scenario.
 jest.mock('useCases/cars/getCarById', () => jest.fn().mockResolvedValue({
@@ -14,7 +15,6 @@ describe('Cars by ID Endpoint', () => {
       method: 'GET',
       query: { id: carId },
     });
-    
 
     await handler(req, res);
 
@@ -22,21 +22,21 @@ describe('Cars by ID Endpoint', () => {
     expect(JSON.parse(res._getData())).toEqual({ id: 1, make: 'Toyota', model: 'Camry', year: 2022 });
   });
 
-  // test('GET /api/cars/:id returns 404 if car does not exist', async () => {
-  //   // Mock the GetCarByIdUseCase function to return null for a non-existing car.
-  //   jest.spyOn(GetCarByIdUseCase, 'mockResolvedValue').mockResolvedValue(null);
+  test('GET /api/cars/:id returns 404 if car does not exist', async () => {
+    // Mock the GetCarByIdUseCase function to return null for a non-existing car.
+    (GetCarByIdUseCase as any).mockResolvedValue(null);
 
-  //   const carId = '2';
-  //   const { req, res } = createMocks({
-  //     method: 'GET',
-  //     query: { id: carId },
-  //   });
+    const carId = '2';
+    const { req, res } = createMocks({
+      method: 'GET',
+      query: { id: carId },
+    });
 
-  //   await handler(req, res);
+    await handler(req, res);
 
-  //   expect(res._getStatusCode()).toBe(404);
-  //   expect(JSON.parse(res._getData())).toEqual({ error: 'Car not found' });
-  // });
+    expect(res._getStatusCode()).toBe(404);
+    expect(JSON.parse(res._getData())).toEqual({ error: 'Car not found' });
+  });
 
   // You can add more test cases for other scenarios, e.g., testing invalid inputs, testing the "DELETE" method, etc.
 });

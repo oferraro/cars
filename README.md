@@ -29,6 +29,10 @@
 `npx knex seed:make 01_colours`
 - Run seeds
 `npx knex seed:run`
+- Run tests
+`yarn test` or `npm run test` (then follow the menu options or press a to run all tests)
+press q to quit the tests
+
 
 TODO:
 
