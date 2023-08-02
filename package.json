@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "camelcase-keys": "^8.0.2",
+    "knex": "^2.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.5.2",
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0"
