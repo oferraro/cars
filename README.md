@@ -47,6 +47,8 @@ Suggestions:
 - Add validations for data
 - Add endpoints
 - Add database constraints
+- Use Postman to create endpoint checks
+
 POST /cars
 GET /car/<id>
 DELETE /cars/<id>
