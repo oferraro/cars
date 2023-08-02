@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+- Run a docker machine:
+`docker run -d -p 33060:3306 --name cars-db -e MYSQL_ROOT_PASSWORD=secret mysql`
+- List docker machines
+`docker ps`
+- Enter in docker mysql machine
+`docker exec -it cars-db bash`
+- Stop docker mysql machine
+`docker stop cars-db`
+- Delete docker mysql machine
+`docker rm cars-db`
+- View docker mysql machine logs (like tail)
+`docker logs -f cars-db`
+- View docker mysql machine logs
+`docker logs cars-db`
+- Connect to mysql from command line
+`mysql -h 127.0.0.1 -u root -P 33060 -psecret cars`
+- Create database (Connect to mysql and run the command)
+`create database cars`
+- Add support to knex
+`npx knex init`
+- Make migrations
+`npx knex migrate:make migration_create_cars_table`
+- Create databases (run migrations)
+`npx knex migrate:latest --env development`
+- Rollback migrations
+`npx knex migrate:down`
+- Create seeders
+`npx knex seed:make 01_colours`
+- Run seeds
+`npx knex seed:run`
 
-First, run the development server:
+TODO:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Add installation details here
+- Add configuration details here
+- Add knex
+- Remove example files like api/hello.ts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Suggestions:
+- How to document the API
+- How to run docker for Mysql
+- Add router
+- Add routes like ~/models ~/interfaces etc
+- Add user, grant privileges
+- Add hexagonal architecture 
+- Add validations for data
+- Add endpoints
+- Add database constraints
+POST /cars
+GET /car/<id>
+DELETE /cars/<id>
+GET /cars
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+To decide:
+- colour can be required, colour can be one by default if color doesn't exist, colour is not mandatory
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
