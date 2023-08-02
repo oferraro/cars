@@ -6,7 +6,7 @@ const DeleteCarUseCase = async (id: number) => {
   
         return { message: 'Car deleted successfully', result };
     } catch (error) {
-        res.status(500).json({ error: 'Error deleting the car' });
+        return { error: 'Error deleting the car' };
     }
 }
 
