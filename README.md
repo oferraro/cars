@@ -55,6 +55,10 @@ Debug:
 `npx knex migrate:down`
 - Create seeders
 `npx knex seed:make 01_colours`
+- If Docker doesn't run (maybe it already exists)
+`docker ps -a | head`
+- Run the existing docker 
+`docker start cars-db`
 
 # Endpoints
 POST /cars
