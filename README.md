@@ -1,6 +1,36 @@
-
+# Setup and Start the project:
 - Run a docker machine:
 `docker run -d -p 33060:3306 --name cars-db -e MYSQL_ROOT_PASSWORD=secret mysql`
+- Create databases (run migrations)
+`npx knex migrate:latest --env development`
+- Run seeds
+`npx knex seed:run`
+- Run the app
+`npm run dev` or `yarn dev`
+- Run tests
+`yarn test` or `npm run test` (then follow the menu options or press a to run all tests)
+press q to quit the tests
+
+
+# TODO (pending):
+- Remove example files like api/hello.ts
+
+# Suggestions:
+- How to document the API (Add a library like Swagger and the comments in endpoints)
+- Add router to avoid ugly file names like [id].ts
+- Add routes like ~/models ~/interfaces etc for the imports ("paths": in tsconfig.json)
+- Add user, grant privileges in mysql to avoid using root credentials
+- Add hexagonal architecture to better organize code
+- Add validations for data (probably with a library)
+- Add missing tests
+- Add missing endpoints (for colours)
+- Add database constraints
+- Use Postman to create endpoint checks
+- Add a IDE configuration (with a plugin or with a file) to format 2 spaces indent and code conventions
+
+Debug:
+- Clear jest cache
+`npx jest --clearCache`
 - List docker machines
 `docker ps`
 - Enter in docker mysql machine
@@ -21,50 +51,12 @@
 `npx knex init`
 - Make migrations
 `npx knex migrate:make migration_create_cars_table`
-- Create databases (run migrations)
-`npx knex migrate:latest --env development`
 - Rollback migrations
 `npx knex migrate:down`
 - Create seeders
 `npx knex seed:make 01_colours`
-- Run seeds
-`npx knex seed:run`
-- Run tests
-`yarn test` or `npm run test` (then follow the menu options or press a to run all tests)
-press q to quit the tests
 
-
-TODO:
-
-- Add installation details here
-- Add configuration details here
-- Add knex
-- Remove example files like api/hello.ts
-
-Run the project:
-`npm run dev` or `yarn dev`
-
-Run the tests:
-`npm run test` or `yarn test`
-
-
-Suggestions:
-- How to document the API
-- How to run docker for Mysql
-- Add router
-- Add routes like ~/models ~/interfaces etc
-- Add user, grant privileges
-- Add hexagonal architecture 
-- Add validations for data
-- Add endpoints
-- Add database constraints
-- Use Postman to create endpoint checks
-- Add a IDE configuration (with a plugin or with a file) to format 2 spaces indent and code conventions
-
-Debug:
-- Clear jest cache
-`npx jest --clearCache`
-
+# Endpoints
 POST /cars
 GET /car/<id>
 DELETE /cars/<id>
