@@ -6,12 +6,9 @@ export const insertIntoCarsTable = async (car: Car) => {
   const {make, model, buildDate, colourId} = car;
 
   const year = parseInt(buildDate); // TODO: check if it's not better to use just year as integer in database
-  const defaultMonth = 1;
-  const defaultDay = 1;
-  const convertedDate = new Date(year, defaultMonth - 1, defaultDay);
-  const formattedDate = convertedDate.toISOString().slice(0, 10);
+  const formattedDate = `${year}-01-01`;
   const values = [make, model, formattedDate, colourId];
-  console.log('query, values', query, values);
+
   const [result] = await pool.query(query, values);
   return result;
 }

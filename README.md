@@ -59,6 +59,7 @@ Suggestions:
 - Add endpoints
 - Add database constraints
 - Use Postman to create endpoint checks
+- Add a IDE configuration (with a plugin or with a file) to format 2 spaces indent and code conventions
 
 Debug:
 - Clear jest cache
