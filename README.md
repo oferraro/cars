@@ -27,6 +27,9 @@ press q to quit the tests
 - Add database constraints
 - Use Postman to create endpoint checks
 - Add a IDE configuration (with a plugin or with a file) to format 2 spaces indent and code conventions
+- Add pagination option in endpoints
+- CamelCase conversion for results (also convert date to substring 10 for results)
+- Add 404 not found for delete when id doesn't exist
 
 Debug:
 - Clear jest cache

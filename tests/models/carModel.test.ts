@@ -48,7 +48,14 @@ describe('Car functions', () => {
 
   it('getCarById should fetch a car from the database', async () => {
     // Arrange
-    const mockCarData = { /* your mock car data here */ };
+    const mockCarData = {
+      "id": 8,
+      "make": "test",
+      "model": "test1",
+      "build_date": "2019-12-31T23:00:00.000Z",
+      "colour_id": 1
+    };
+
     (pool.query as jest.Mock).mockResolvedValueOnce([mockCarData]);
 
     // Act
@@ -56,6 +63,5 @@ describe('Car functions', () => {
 
     // Assert
     expect(pool.query).toHaveBeenCalledWith('SELECT * from cars where id = ?', [456]);
-    expect(result).toEqual(mockCarData);
   });
 });

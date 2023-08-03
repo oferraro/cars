@@ -2,9 +2,6 @@ import { createMocks } from 'node-mocks-http'; // Import the createMocks functio
 import handler from '../../pages/api/cars/[id]';
 import DeleteCarUseCase from '../../useCases/cars/delete';
 
-// jest.mock('../useCases/cars/getCarById', () => jest.fn().mockResolvedValue({
-//   id: 1, make: 'Toyota', model: 'Camry' 
-// }));
 jest.mock('../../useCases/cars/delete', () => jest.fn());
 
 describe('Cars by ID Endpoint', () => {

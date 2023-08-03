@@ -1,3 +1,4 @@
+import { RowDataPacket } from 'mysql2';
 import pool from '../db';
 import { Car } from '../interfaces/car';
 
@@ -25,6 +26,18 @@ export const getCarById = async (id: number) => {
   const query = 'SELECT * from cars where id = ?';
   const values = [id];
   
-  const [result] = await pool.query(query, values);
-  return result;
+  const [result] = await pool.query<RowDataPacket[]>(query, values);
+
+  if (result.length === 0) {
+    return false;
+  }
+  
+  return result[0] as Car;
+};
+
+export const getAllCars = async () => {
+  const query = 'SELECT * from cars';
+  
+  const [result] = await pool.query(query);
+  return result as Car[];
 };
