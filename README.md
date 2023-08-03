@@ -41,6 +41,13 @@ TODO:
 - Add knex
 - Remove example files like api/hello.ts
 
+Run the project:
+`npm run dev` or `yarn dev`
+
+Run the tests:
+`npm run test` or `yarn test`
+
+
 Suggestions:
 - How to document the API
 - How to run docker for Mysql
@@ -52,6 +59,10 @@ Suggestions:
 - Add endpoints
 - Add database constraints
 - Use Postman to create endpoint checks
+
+Debug:
+- Clear jest cache
+`npx jest --clearCache`
 
 POST /cars
 GET /car/<id>

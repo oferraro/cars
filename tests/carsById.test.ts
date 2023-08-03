@@ -1,10 +1,8 @@
 import { createMocks } from 'node-mocks-http'; // Import the createMocks function here
-// import GetCarByIdUseCase from '../useCases/cars/getCarById';
 import handler from '../pages/api/car/[id]';
-import GetCarByIdUseCase from 'useCases/cars/getCarById';
+import GetCarByIdUseCase from '../useCases/cars/getCarById';
 
-// Mock the GetCarByIdUseCase function to return a car for testing the existing car scenario.
-jest.mock('useCases/cars/getCarById', () => jest.fn().mockResolvedValue({
+jest.mock('../useCases/cars/getCarById', () => jest.fn().mockResolvedValue({
   id: 1, make: 'Toyota', model: 'Camry', year: 2022
 }));
 
@@ -23,7 +21,6 @@ describe('Cars by ID Endpoint', () => {
   });
 
   test('GET /api/cars/:id returns 404 if car does not exist', async () => {
-    // Mock the GetCarByIdUseCase function to return null for a non-existing car.
     (GetCarByIdUseCase as any).mockResolvedValue(null);
 
     const carId = '2';
